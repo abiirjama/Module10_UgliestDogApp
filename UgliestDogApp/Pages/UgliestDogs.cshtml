@@ -1,0 +1,21 @@
+﻿@page
+@model UgliestDogsModel
+@{
+    ViewData["Title"] = "Ugliest Dogs";
+}
+
+<h1>World's Ugliest Dog Contest Winners</h1>
+
+<form method="post">
+    <select name="selectedDog" asp-items="Model.DogList" onchange="this.form.submit()">
+        <option value="">-- Select a Dog --</option>
+    </select>
+</form>
+
+@if (Model.SelectedDog != null)
+{
+    <h2>@Model.SelectedDog.Name</h2>
+    <p>Breed: @Model.SelectedDog.Breed</p>
+    <p>Year: @Model.SelectedDog.Year</p>
+    <img src="/images/@Model.SelectedDog.ImageFileName" alt="@Model.SelectedDog.Name" style="max-width: 300px;" />
+}
